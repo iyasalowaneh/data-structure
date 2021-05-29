@@ -84,6 +84,7 @@ console.log(`next group in line ${iyas.peek()}`);
 //}
 //}
 //console.log(groups(3));
+//console.log(groups(12));
 
 const x = (groupSize) => {
   while (groupSize > 12) {
