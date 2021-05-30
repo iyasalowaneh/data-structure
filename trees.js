@@ -24,7 +24,7 @@ class TreeNode {
   };
 }
 
-let childName = prompt(`enter child full name (done if finished)`);
+let childName = prompt(`please enter child full name (done if finished)`);
 let tree = new TreeNode();
 
 while (childName !== "done") {
