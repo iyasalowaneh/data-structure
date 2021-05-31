@@ -7,12 +7,24 @@ class TreeNode {
   }
 
   addChild = (node) => {
-    if (this.children.length <= 2) this.children.push(node);
+    if (this.children.length < 2) {
+      this.children.push(node);
+      console.log(`child ${child.name}`);
+    } else console.log("orphrn");
   };
 
-  removeChild = (node) => this.children.filter((child) => child !== node);
+  //removeChild = (node) => this.children.filter((child) => child !== node);
 
-  traverse = (child) => {
+  traverse = () => {
+    let nodes = [this];
+    while (nodes.length > 0) {
+      let currentNode = nodes.pop();
+      console.log(currentNode.name);
+      nodes = [...nodes, ...currentNode.children];
+    }
+  };
+
+  search = (child) => {
     let nodes = [this];
     while (nodes.length > 0) {
       let currentNode = nodes.pop();
@@ -21,15 +33,20 @@ class TreeNode {
       }
       nodes = [...nodes, ...currentNode.children];
     }
+    return " no parent";
   };
 }
-
 let childName = prompt(`please enter child full name (done if finished)`);
-let tree = new TreeNode();
+let root = new TreeNode("family");
 
 while (childName !== "done") {
-  tree.addChild(childName);
-}
-if (childName === "done") tree.traverse;
+  let tree = new TreeNode(childName);
+  let parent = root.search(tree);
 
-console.log(tree.addChild);
+  if (parent !== " no parent") {
+    parent.addChild(tree);
+  } else console.log(parent);
+  childName = prompt(`please enter child full name (done if finished)`);
+}
+//if (childName === "done") tree.traverse;
+root.traverse();
