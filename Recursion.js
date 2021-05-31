@@ -8,8 +8,8 @@ const Sum = (numbers) => {
   let sum = 0;
   numbers.map((number) => {
     if (typeof number === "number") sum += number;
-    else sum += theSum(number);
+    else sum += Sum(number);
   });
   return sum;
 };
-console.log(theSum(numbers));
+console.log(Sum(numbers));
